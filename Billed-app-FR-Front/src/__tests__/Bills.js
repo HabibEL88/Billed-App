@@ -10,6 +10,9 @@ import { localStorageMock } from "../__mocks__/localStorage.js";
 
 import router from "../app/Router.js";
 
+import mockStore from "../__mocks__/store";
+jest.mock("../app/Store", () => mockStore);
+
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
     test("Then bill icon in vertical layout should be highlighted", async () => {
@@ -30,7 +33,9 @@ describe("Given I am connected as an employee", () => {
       await waitFor(() => screen.getByTestId("icon-window"));
       const windowIcon = screen.getByTestId("icon-window");
       //to-do write expect expression
+      expect(windowIcon).toHaveClass("active-icon");
     });
+
     test("Then bills should be ordered from earliest to latest", () => {
       document.body.innerHTML = BillsUI({ data: bills });
       const dates = screen
