@@ -33,12 +33,16 @@ describe("Given I am connected as an employee", () => {
       document.body.append(root);
       // On appelle la fonction "router" qui gère la navigation de l'application.
       router();
+
       // On utilise la fonction "onNavigate" pour naviguer vers la page des notes de frais.
       window.onNavigate(ROUTES_PATH.Bills);
+
       // On utilise la fonction "waitFor" de l'objet "screen" pour attendre que l'icône des notes de frais soit chargée.
       await waitFor(() => screen.getByTestId("icon-window"));
+
       // On récupère l'icône des notes de frais.
       const windowIcon = screen.getByTestId("icon-window");
+
       //to-do write expect expression
       // On vérifie que l'icône des notes de frais possède la classe "active-icon"
       expect(windowIcon).toHaveClass("active-icon");
@@ -95,20 +99,28 @@ describe("Given I am connected as an employee", () => {
       const root = document.createElement("div");
       root.setAttribute("id", "root");
       document.body.append(root);
+
       // On appelle la fonction "router" pour configurer le routage de l'application.
       router();
+
       // On simule un changement de page en appelant la fonction "onNavigate" avec l'itinéraire pour la page des notes de frais.
       window.onNavigate(ROUTES_PATH.Bills);
+
       // On attend que l'élément avec l'identifiant de test "btn-new-bill" soit affiché.
       await waitFor(() => screen.getByTestId("btn-new-bill"));
+
       // On récupère l'élément de bouton de nouvelle note de frais.
       const billButton = screen.getByTestId("btn-new-bill");
+
       // On simule un clic sur le bouton.
       fireEvent.click(billButton);
+
       // On attend que l'élément avec l'identifiant de test "form-new-bill" soit affiché.
       await waitFor(() => screen.getByTestId("form-new-bill"));
+
       // On récupère l'élément du formulaire de nouvelle note de frais.
       const billForm = screen.getByTestId("form-new-bill");
+
       // On vérifie que l'élément du formulaire existe.
       expect(billForm).toBeTruthy();
     });
