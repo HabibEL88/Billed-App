@@ -34,7 +34,7 @@ const onNavigate = (pathname) => {
 };
 
 describe("Given I am connected as an employee, When I upload a file", () => {
-  test("Then i upload a authorized format, the file shoud be send", () => {
+  test("Then i upload the right format, the file should be send", () => {
     // Créer une instance de NewBillUI et générer le code HTML pour l'interface utilisateur
     const pageContent = NewBillUI();
     // Remplacer le contenu de l'élément <body> par le code HTML généré
